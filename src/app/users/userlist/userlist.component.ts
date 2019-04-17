@@ -14,8 +14,7 @@ export class UserlistComponent implements OnInit {
 
   settings = {
     actions: false,
-    columns: {
-      id: { title: 'ID' },
+    columns: {      
       username: { title: 'User Name', type: 'custom',
         renderComponent: UserlistRowRenderComponent },
       name: { title: 'Full Name' },      

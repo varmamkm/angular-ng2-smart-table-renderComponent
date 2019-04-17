@@ -1,10 +1,13 @@
+
+
+<button  routerLink="/userlist">Go Back</button>
+
 <p>
   User Details
 </p>
 
-<button  routerLink="/userlist">Go Back</button>
-
 <div *ngIf="_user">
+  
   <ul>
     <li>{{_user.id}}</li>
     <li>{{_user.name}}</li>
@@ -12,5 +15,7 @@
     <li>{{_user.email}}</li>
     <li>{{_user.website}}</li>
   </ul>
+
+  {{_user | json}}
 </div>
 
