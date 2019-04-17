@@ -7,7 +7,7 @@ import { User } from './user.entity';
 
 @Injectable()
 export class UserService {
-  usersurl = `https://jsonplaceholder.typicode.com/users`;
+  usersurl = 'https://jsonplaceholder.typicode.com/users';
 
   constructor(
     private http: HttpClient) 
@@ -15,5 +15,10 @@ export class UserService {
 
   getUsers (): Observable<User[]> {
     return this.http.get<User[]>(this.usersurl);
+  }
+
+  getUser (id: number): Observable<any> {
+    const url = `${this.usersurl}/${id}`;
+    return this.http.get<any>(url);
   }
 }

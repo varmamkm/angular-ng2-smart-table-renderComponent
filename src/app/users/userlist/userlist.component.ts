@@ -1,21 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { User } from '../user.entity';
+import { User } from '../../user.entity';
+import { UserlistRowRenderComponent } from './userlistrowrender.component';
 
 @Component({
-  selector: 'app-load-users-with-resolver',
-  templateUrl: './load-users-with-resolver.component.html',
-  styleUrls: ['./load-users-with-resolver.component.css']
+  selector: 'app-userlist',
+  templateUrl: './userlist.component.html',
+  styleUrls: ['./userlist.component.css']
 })
-export class LoadUsersWithResolverComponent implements OnInit {
+export class UserlistComponent implements OnInit {
 
-   _users:User[];
+ _users:User[];
+
   settings = {
     actions: false,
     columns: {
       id: { title: 'ID' },
-      name: { title: 'Full Name' },
-      username: { title: 'User Name' },
+      username: { title: 'User Name', type: 'custom',
+        renderComponent: UserlistRowRenderComponent },
+      name: { title: 'Full Name' },      
       email: { title: 'Email' }
     }
   };
@@ -26,5 +29,4 @@ export class LoadUsersWithResolverComponent implements OnInit {
     console.log("this._users:",this._users);
     console.log("load data before component is loaded");
   }
-
 }

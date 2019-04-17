@@ -6,15 +6,12 @@ import { HelloComponent } from './hello.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './user.service';
 import { Routes, RouterModule } from '@angular/router';
-import { LoadUsersWithoutResolverComponent } from './load-users-without-resolver/load-users-without-resolver.component';
-import { LoadUsersWithResolverComponent } from './load-users-with-resolver/load-users-with-resolver.component';
-import { UserResolver } from './load-users-with-resolver/user-resolver';
+import { UserResolver } from './users/user-resolver';
 import { Ng2SmartTableModule } from 'ngx-smart-table';
+import { UsersModule } from './users/users.module';
 
 const approutes: Routes = [
-  { path: 'userswithoutresolver', component: LoadUsersWithoutResolverComponent },
-  { path: 'userswithresolver', component: LoadUsersWithResolverComponent, resolve: { users: UserResolver } },
-  { path: '', component: LoadUsersWithoutResolverComponent }
+
 ]
 
 @NgModule({
@@ -23,8 +20,9 @@ const approutes: Routes = [
     FormsModule,
     HttpClientModule,
     Ng2SmartTableModule,
+    UsersModule,
     RouterModule.forRoot(approutes) ],
-  declarations: [ AppComponent, HelloComponent, LoadUsersWithoutResolverComponent, LoadUsersWithResolverComponent ],
+  declarations: [ AppComponent, HelloComponent ],
   bootstrap:    [ AppComponent ],
   providers: [UserService, UserResolver]
 })
